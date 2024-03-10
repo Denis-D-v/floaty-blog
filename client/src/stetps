@@ -1,0 +1,36 @@
+"Tailwind CSS" - фреймворк созд-ия польз-го интерфейса, набор предварительно стилизованных компонентов 
+и утилит, не предоставляет готовых стилевых файлов:вы комбинируете различные классы, чтобы создать 
+необходимый стиль. Гибкость и настраиваемость:изменять цвета, размеры, шрифты и др.
+
+9.01 Install react.js and Tailwind CCS
+- npm create vite@latest  (template react)->
+-> Rreact -> JS + SW ->
+- cd client  -> npm i
+- npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+//( create file JS tailwind.config.js and put inside this file) :
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html', './src/**/.*.{js, ts,jsx,tsx}'],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+
+- Index.css (clear and put inside this file):
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+- delete unnesesary files: App.css,  svg from PublicFolder and AssetsFolder
+
+- Index.html: delete string <Link.../>
+  and put name of thn Blog: <title>FLOATY-Blog</title>
+
+- App clear and "rfc"
+
+- npm run dev
+
+
+
