@@ -29,8 +29,68 @@ export default {
   and put name of thn Blog: <title>FLOATY-Blog</title>
 
 - App clear and "rfc"
-
 - npm run dev
 
+- Create commits and repository:
+-git init
+-git add .
+-git commit -m "install react js and 
+tailwind css and create firt template"
+-->On GitHub:
++ new repozitory->name->publish
+-->in …or push an existing repository from the command line:
+-git remote add origin git@github.com:EnshteinDe/floaty-blog.git
+-git branch -M main
+-git push -u origin main
+
+Create Pages and Routes:
+-./pages:--> About, SignIn, SignUp, Home, Projects by 'rfc'
+- npm i react-router-dom
+-APP--->create Routes
+
+Create Header components
+-./components
+-'Flowbite react' like bootstrap, install settings
+ -npm i flowbite-react
+ -tailwind.config.js-->:
+ /** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
+    'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}',
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [require('flowbite/plugin')],
+};
+
+-HEADER-->: Navbar
+Create a button and logo on button by Flowbite
+-npm i react-icons
+'import { Button, Navbar, TextInput } from 'flowbite-react'"
+import { Link, useLocation } from 'react-router-dom';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { FaMoon } from 'react-icons/fa';
+
+using: div and span for Albert's_Blog;
+      'Button and icons for buttons;'
+       className 'for padding bording(px-horizontal, px-vertical);'
+       whitespace-nowrap: 'dont move to new string'
+      font-semibold dark:text-white "midle girnost texta & beliy text na temnoy teme'
+       Navbar.Toggle - menu after Sign In button when became sm screen"
+       
+       useLocation(need import)-'for active devinetly styles and components
+                                 depends on path'
+       BUT: <Navbar.Link active={path === '/'}>
+           <Link to="/">Home</Link>
+      make error: validateDOMNesting(...): <a> cannot appear as a descendant of <a>.
+      cause 2 links SO NEED do like:
+            <Navbar.Link active={path === '/'} as={'div'}>
+           <Link to="/">Home</Link>
+
+       
+       
 
 
