@@ -58,3 +58,15 @@ export const signin = async (req, res, next) => {
   }
 };
 // temperary commit
+
+export const google = async (req, res, next) => {
+  const { email, name, googlePhotoUrl } = req.body;
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
+    }
+  } catch (error) {
+    next(error);
+  }
+};
