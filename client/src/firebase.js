@@ -4,15 +4,14 @@ import { initializeApp } from 'firebase/app';
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-//console.log(import.meta.env.VITE_FIREBASE_API_KEY);
-//checking api_key
+console.log(import.meta.env.VITE_FIREBASE_API_KEY);
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: 'floaty-b23c5.firebaseapp.com',
-  projectId: 'floaty-b23c5',
-  storageBucket: 'floaty-b23c5.appspot.com',
-  messagingSenderId: '115653996981',
-  appId: '1:115653996981:web:4eb922f3d62359dfc6e9fc',
+  authDomain: 'floaty-1e239.firebaseapp.com',
+  projectId: 'floaty-1e239',
+  storageBucket: 'floaty-1e239.appspot.com',
+  messagingSenderId: '197685524929',
+  appId: '1:197685524929:web:014c3041ce3fda4902d740',
 };
 
 // Initialize Firebase
