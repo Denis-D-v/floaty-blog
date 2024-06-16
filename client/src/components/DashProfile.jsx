@@ -30,7 +30,7 @@ export default function DashProfile() {
           Update
         </Button>
         <div className="text-red-500 flex justify-between mt-5">
-          <span className="cursor-pointer">Delete Acount</span>
+          <span className="cursor-pointer">Delete Acountt</span>
           <span className="cursor-pointer">Sign Out</span>
         </div>
       </form>
