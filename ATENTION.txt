@@ -1,0 +1,62 @@
+useEffect: if after {} before 'array of dependencies' dont have"," ...dosnt work
+!cause two deferent essence!
+useEffect(() => {
+    if (imageFile) {
+      uploadImage();
+    }
+  }, [imageFile]); //!ATENTION! 
+  const uploadImage = async () => {
+    console.log('upload image...');
+  };
+
+{} instead [] in const...useState-- need'[]'
+-i can choose new image from PC but for avalible to change and use this Image in porfile Picture:
+cr one more useState: 
+const [imageFileUrl, setImageFileUrl] = useState(null);
+//!Atention! when declared useState by const like !const !{imageFileUrl, setImageFileUrl}! = useState(null);
+doesnt work, here the imageFileUrl will not changE! need const [imageFileUrl, setImageFileUrl] = useState(null)//
+
+mistake in console-page_code :
+chunk-T7VP4UGM.js?v=2377c65d:521 Warning: validateDOMNesting(...): <a> cannot appear as a descendant of <a>.
+    at a
+    at li
+    at ListItem2 (http://localhost:5173/node_modules/.vite/deps/flowbite-react.js?v=2377c65d:11220:20)
+    at http://localhost:5173/node_modules/.vite/deps/flowbite-react.js?v=2377c65d:11224:61
+    at a
+    at LinkWithRef (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=2377c65d:4780:5)
+
+in DashSidebar.jsx its about <Link>?, just add as='div' thats it 
+<a> — HTML-элемент, представляющий гиперссылку(/dashboard?tab=profile)=== элемент для перехода по URL-адресам 
+в веб-приложениях и на веб-страницах. компонент Link из react-router-dom рендерит HTML-элемент <a>.Kогда
+используете компонент Link, он создает гиперссылку. Если Sidebar.Item тоже рендерит элемент <a> внутри себя, 
+делая тоже самое.
+<a> (гиперссылка) не может содержать другой <a> элемент внутри себя!Неверная структура HTML!
+Решение:с помощью свойства as="div" изменили элемент, рендеримый Sidebar.Item, с <a> на <div> 
+либо "onClick" instead as="div"
+useEffect(() => {
+    const urlParams = new URLSearchParams(location.search);
+    const tabFromUrl = urlParams.get('tab');
+    if (tabFromUrl) {
+      setTab(tabFromUrl);
+    }
+  }, [location.search]);
+
+  const handleNavigation = (path) => {
+    history.push(path);
+  };
+
+  return (
+    <Sidebar className="w-full md:w-56">
+      <Sidebar.Items>
+        <Sidebar.ItemGroup>
+          <Sidebar.Item
+            active={tab === 'profile'}
+            icon={HiUser}
+            label={'User'}
+            labelColor="dark"
+            onClick={() => handleNavigation('/dashboard?tab=profile')}
+            className="cursor-pointer"
+          >
+            Profile
+          </Sidebar.Item>
+          <Sidebar.Item icon={HiArrowSmRight} className="cursor-pointer">)
