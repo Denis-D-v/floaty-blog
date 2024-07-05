@@ -57,7 +57,7 @@ export default function DashProfile() {
       },
       (error) => {
         setImageFileUrlUploadError(
-          'Could not upload image (File must be less than 2MB)'
+          'Could not upload image (File Must be less Than 2MB)'
         );
         setImageFileUploadProgress(null);
         setImageFile(null);
