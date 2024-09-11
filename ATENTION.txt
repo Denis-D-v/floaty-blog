@@ -1,4 +1,4 @@
-useEffect: if after {} before 'array of dependencies' dont have"," ...dosnt work
+useEffect: if after {} before 'array of dependencies' dont have "," ...dosnt work
 !cause two deferent essence!
 useEffect(() => {
     if (imageFile) {
@@ -13,8 +13,11 @@ useEffect(() => {
 -i can choose new image from PC but for avalible to change and use this Image in porfile Picture:
 cr one more useState: 
 const [imageFileUrl, setImageFileUrl] = useState(null);
+
 //!Atention! when declared useState by const like !const !{imageFileUrl, setImageFileUrl}! = useState(null);
 doesnt work, here the imageFileUrl will not changE! need const [imageFileUrl, setImageFileUrl] = useState(null)//
+
+
 
 mistake in console-page_code :
 chunk-T7VP4UGM.js?v=2377c65d:521 Warning: validateDOMNesting(...): <a> cannot appear as a descendant of <a>.
@@ -33,6 +36,7 @@ in DashSidebar.jsx its about <Link>?, just add as='div' thats it
 <a> (гиперссылка) не может содержать другой <a> элемент внутри себя!Неверная структура HTML!
 Решение:с помощью свойства as="div" изменили элемент, рендеримый Sidebar.Item, с <a> на <div> 
 либо "onClick" instead as="div"
+
 useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const tabFromUrl = urlParams.get('tab');
@@ -55,8 +59,37 @@ useEffect(() => {
             label={'User'}
             labelColor="dark"
             onClick={() => handleNavigation('/dashboard?tab=profile')}
-            className="cursor-pointer"
-          >
+            className="cursor-pointer">
             Profile
           </Sidebar.Item>
           <Sidebar.Item icon={HiArrowSmRight} className="cursor-pointer">)
+
+
+
+-DashProfile.jsx: Object.keys from CAPITAL leetter not SmaL!!!
+const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (Object.keys(formData).length === 0) {
+      return;}}
+
+      dispatch is not defined:
+import { useDispatch, useSelector } from 'react-redux and
+const dispatch = useDispatch();
+ 
+
+
+
+
+
+
+
+
+Dont Miss RIGHT WAY for res "update"! `/api/user/...?/${currentUser._id}`
+dispatch(updateStart()); 
+      const res = await fetch(`/api/user/update/${currentUser._id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
