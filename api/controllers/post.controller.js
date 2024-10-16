@@ -32,7 +32,7 @@ export const getposts = async (req, res, next) => {
   try {
     const startIndex = parseInt(req.query.startIndex) || 0;
     const limit = parseInt(req.query.limit) || 9;
-    const sortDirection = req.query.orderr === 'asc' ? 1 : -1;
+    const sortDirection = req.query.order === 'asc' ? 1 : -1;
     const posts = await Post.find({
       ...(req.query.userId && { userId: req.query.userId }),
       ...(req.query.category && { category: req.query.category }),
@@ -45,7 +45,7 @@ export const getposts = async (req, res, next) => {
         ],
       }),
     })
-      .sort({ updateAt: sortDirection })
+      .sort({ updatedAt: sortDirection })
       .skip(startIndex)
       .limit(limit);
 
@@ -58,10 +58,16 @@ export const getposts = async (req, res, next) => {
       now.getMonth() - 1,
       now.getDate()
     );
-    const LastMonthPosts = await Post.countDocuments({
+
+    const lastMonthPosts = await Post.countDocuments({
       createdAt: { $gte: oneMonthAgo },
     });
-    res.status(200).json({ posts, totalPosts, LastMonthPosts });
+
+    res.status(200).json({
+      posts,
+      totalPosts,
+      lastMonthPosts,
+    });
   } catch (error) {
     next(error);
   }
