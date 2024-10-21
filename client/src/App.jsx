@@ -26,6 +26,7 @@ export default function App() {
         <Route element={<OnlyAdminPrivateRoute />}>
           <Route path="/create-post" element={<CreatePost />} />
         </Route>
+
         <Route path="/news" element={<News />} />
         {/* <Route path="/post/:postSlug" element={<PostPage />} /> */}
       </Routes>
