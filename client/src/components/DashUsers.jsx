@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import { FaCheck, FaTimes } from 'react-icons/fa';
+import { MdDelete } from 'react-icons/md';
 
 export default function DashUsers() {
   const { currentUser } = useSelector((state) => state.user);
@@ -109,7 +110,8 @@ export default function DashUsers() {
                       }}
                       className="font-medium text-red-500 hover:underline cursor-pointer"
                     >
-                      Delete
+                       <span className='hidden sm:inline'> Delete</span>
+                     <MdDelete className='inline sm:hidden'span/>
                     </span>
                   </Table.Cell>
                 </Table.Row>
