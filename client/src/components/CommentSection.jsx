@@ -4,6 +4,7 @@ import { useSelector, } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Comment from './Comment.jsx';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
+import { set } from 'mongoose';
 export default function CommentSection({ postId }) {
   const { currentUser } = useSelector((state) => state.user);
   const [comment, setComment] = useState('');
@@ -83,6 +84,13 @@ export default function CommentSection({ postId }) {
     }
   };
 
+  const handleEdit =  async (comment, editedContent)  => {
+    setComments(
+      comments.map((c) =>
+      c._id === comment._id ? { ...c, content: editedContent} : c
+    )
+    );
+  }
   return (
     <div className="max-w-2xl mx-auto w-full p-3">
       {currentUser ? (
@@ -151,6 +159,7 @@ export default function CommentSection({ postId }) {
               key={comment._id}
               comment={comment}
               onLike={handleLike}
+              onEdit={handleEdit}
             />
           ))}
         </>
