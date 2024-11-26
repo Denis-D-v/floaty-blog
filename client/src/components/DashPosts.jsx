@@ -122,8 +122,8 @@ export default function DashPosts() {
                       }}
                       className="font-medium text-red-500 hover:underline cursor-pointer"
                     >
-                    <span className='hidden sm:inline'> Delete</span>
-                     <MdDelete className='inline sm:hidden'span/>
+                      <span className="hidden sm:inline"> Delete</span>
+                      <MdDelete className="inline sm:hidden" span />
                     </span>
                   </Table.Cell>
                   <Table.Cell>
@@ -131,8 +131,8 @@ export default function DashPosts() {
                       className="text-teal-500 hover:underline"
                       to={`/update-post/${post._id}`}
                     >
-                      <span className='hidden sm:iline'>Edit</span>
-                      <MdEdit className='inline sm:hidden'span/>
+                      <span className="hidden sm:inline">Edit</span>
+                      <MdEdit className="inline sm:hidden" span />
                     </Link>
                   </Table.Cell>
                 </Table.Row>
