@@ -1,12 +1,12 @@
 import { Button, Select, TextInput } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import PostCard from '../components/PostCard';
+import PostCard from '../components/PostCard.jsx';
 
 export default function Search() {
   const [sidebarData, setSidebarData] = useState({
     searchTerm: '',
-    sort: 'desc',
+    order: 'desc',
     category: 'uncategorized',
   });
 
@@ -22,13 +22,19 @@ export default function Search() {
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const searchTermFromUrl = urlParams.get('searchTerm');
-    const sortFromUrl = urlParams.get('sort');
+    console.log(searchTermFromUrl);
+
+    const sortFromUrl = urlParams.get('order');
+    console.log(sortFromUrl);
+
     const categoryFromUrl = urlParams.get('category');
+    console.log(categoryFromUrl);
+
     if (searchTermFromUrl || sortFromUrl || categoryFromUrl) {
       setSidebarData({
         ...sidebarData,
         searchTerm: searchTermFromUrl,
-        sort: sortFromUrl,
+        order: sortFromUrl,
         category: categoryFromUrl,
       });
     }
@@ -36,7 +42,12 @@ export default function Search() {
     const fetchPosts = async () => {
       setLoading(true);
       const searchQuery = urlParams.toString();
+      console.log(searchQuery);
+
+      // console.log('Запрос к серверу:', `/api/post/getposts?${searchQuery}`);
       const res = await fetch(`/api/post/getposts?${searchQuery}`);
+      console.log(res);
+
       if (!res.ok) {
         setLoading(false);
         return;
@@ -44,6 +55,7 @@ export default function Search() {
       if (res.ok) {
         const data = await res.json();
         setPosts(data.posts);
+
         setLoading(false);
         if (data.posts.length === 9) {
           setShowMore(true);
@@ -59,9 +71,9 @@ export default function Search() {
     if (e.target.id === 'searchTerm') {
       setSidebarData({ ...sidebarData, searchTerm: e.target.value });
     }
-    if (e.target.id === 'sort') {
+    if (e.target.id === 'order') {
       const order = e.target.value || 'desc';
-      setSidebarData({ ...sidebarData, sort: order });
+      setSidebarData({ ...sidebarData, order });
     }
     if (e.target.id === 'category') {
       const category = e.target.value || 'uncategorized';
@@ -73,7 +85,7 @@ export default function Search() {
     e.preventDefault();
     const urlParams = new URLSearchParams(location.search);
     urlParams.set('searchTerm', sidebarData.searchTerm);
-    urlParams.set('sort', sidebarData.sort);
+    urlParams.set('order', sidebarData.order);
     urlParams.set('category', sidebarData.category);
     const searchQuery = urlParams.toString();
     navigate(`/search?${searchQuery}`);
@@ -118,7 +130,11 @@ export default function Search() {
           </div>
           <div className="flex items-center gap-2">
             <label className="font-semibold">Sort:</label>
-            <Select onChange={handleChange} value={sidebarData.sort} id="sort">
+            <Select
+              onChange={handleChange}
+              value={sidebarData.order}
+              id="order"
+            >
               <option value="desc">Latest</option>
               <option value="asc">Oldest</option>
             </Select>
@@ -149,7 +165,14 @@ export default function Search() {
           {!loading && posts.length === 0 && (
             <p className="text-xl text-gray-500">No posts found.</p>
           )}
-          {loading && <p className="text-xl text-gray-500">Loading...</p>}
+          {loading && (
+            <p
+              className="text-xl
+           text-gray-500"
+            >
+              Loading...
+            </p>
+          )}
           {!loading &&
             posts &&
             posts.map((post) => <PostCard key={post._id} post={post} />)}
