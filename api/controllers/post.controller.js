@@ -2,8 +2,6 @@ import Post from '../models/post.model.js';
 import { errorHandler } from '../utils/error.js';
 
 export const create = async (req, res, next) => {
-  // console.log(req.user);
-
   if (!req.user.isAdmin) {
     return next(errorHandler(403, 'You are not allowed to create a post'));
   }
@@ -30,9 +28,14 @@ export const create = async (req, res, next) => {
 
 export const getposts = async (req, res, next) => {
   try {
+    // console.log('Параметры запроса:', req.query);
+    // console.log('Категория в запросе:', req.query.category);
+
     const startIndex = parseInt(req.query.startIndex) || 0;
     const limit = parseInt(req.query.limit) || 9;
     const sortDirection = req.query.order === 'asc' ? 1 : -1;
+    console.log(req.query.userId);
+
     const posts = await Post.find({
       ...(req.query.userId && { userId: req.query.userId }),
       ...(req.query.category && { category: req.query.category }),
@@ -45,15 +48,14 @@ export const getposts = async (req, res, next) => {
         ],
       }),
     })
-
       .sort({ updatedAt: sortDirection })
       .skip(startIndex)
       .limit(limit);
 
+    console.log('Найденные посты:', posts);
+
     const totalPosts = await Post.countDocuments();
-
     const now = new Date();
-
     const oneMonthAgo = new Date(
       now.getFullYear(),
       now.getMonth() - 1,
@@ -70,6 +72,7 @@ export const getposts = async (req, res, next) => {
       lastMonthPosts,
     });
   } catch (error) {
+    // console.error('Ошибка в getposts:', error);
     next(error);
   }
 };
