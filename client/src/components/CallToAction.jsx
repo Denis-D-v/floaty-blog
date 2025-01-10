@@ -20,7 +20,7 @@ export default function CallToAction() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            JavaScript Projects
+            JavaScript News
           </a>
         </Button>
       </div>

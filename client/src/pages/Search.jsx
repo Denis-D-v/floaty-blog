@@ -10,7 +10,7 @@ export default function Search() {
     category: 'uncategorized',
   });
 
-  console.log(sidebarData);
+  // console.log(sidebarData);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showMore, setShowMore] = useState(false);
@@ -22,13 +22,13 @@ export default function Search() {
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const searchTermFromUrl = urlParams.get('searchTerm');
-    console.log(searchTermFromUrl);
+    // console.log(searchTermFromUrl);
 
     const sortFromUrl = urlParams.get('order');
-    console.log(sortFromUrl);
+    // console.log(sortFromUrl);
 
     const categoryFromUrl = urlParams.get('category');
-    console.log(categoryFromUrl);
+    // console.log(categoryFromUrl);
 
     if (searchTermFromUrl || sortFromUrl || categoryFromUrl) {
       setSidebarData({
@@ -42,11 +42,11 @@ export default function Search() {
     const fetchPosts = async () => {
       setLoading(true);
       const searchQuery = urlParams.toString();
-      console.log(searchQuery);
+      // console.log(searchQuery);
 
       // console.log('Запрос к серверу:', `/api/post/getposts?${searchQuery}`);
       const res = await fetch(`/api/post/getposts?${searchQuery}`);
-      console.log(res);
+      // console.log(res);
 
       if (!res.ok) {
         setLoading(false);
