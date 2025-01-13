@@ -8,7 +8,7 @@ export default function News() {
     >
       <h1 className="text-3xl text-semibold text-center my-7">News</h1>
       <p className="text-md text-gray-500">
-        Read our latest news, articles and blog posts
+        Read our latest news, information, articles and blog posts
       </p>
       <CallToAction />
     </div>
