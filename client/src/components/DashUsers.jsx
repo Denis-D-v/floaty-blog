@@ -56,7 +56,7 @@ export default function DashUsers() {
         method: 'DELETE',
       });
       const data = await res.json();
-      if (!res.ok) {
+      if (res.ok) {
         setUsers((prev) => prev.filter((user) => user._id !== userIdToDelete));
         setShowModal(false);
       } else {
@@ -110,8 +110,8 @@ export default function DashUsers() {
                       }}
                       className="font-medium text-red-500 hover:underline cursor-pointer"
                     >
-                       <span className='hidden sm:inline'> Delete</span>
-                     <MdDelete className='inline sm:hidden'span/>
+                      <span className="hidden sm:inline"> Delete</span>
+                      <MdDelete className="inline sm:hidden" span />
                     </span>
                   </Table.Cell>
                 </Table.Row>
