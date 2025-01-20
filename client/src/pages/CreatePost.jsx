@@ -102,10 +102,10 @@ export default function CreatePost() {
               setFormData({ ...formData, category: e.target.value })
             }
           >
-            <option value="legends">Select a category</option>
-            <option value="motogp">JavaScript</option>
-            <option value="formula1">React.js</option>
-            <option value="boxing">Next.js</option>
+            <option value="uncategorized">Select a category</option>
+            <option value="motogp">Motogp</option>
+            <option value="formula1">Formula1</option>
+            <option value="boxing">Boxing</option>
           </Select>
         </div>
         <div
