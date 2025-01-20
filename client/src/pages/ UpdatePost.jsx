@@ -133,10 +133,10 @@ export default function UpdatePost() {
             }
             value={formData.category}
           >
-            <option value="uncategorized">Select a category</option>
-            <option value="javascript">Javascript</option>
-            <option value="react">React.js</option>
-            <option value="next">Next.js</option>
+            <option value="legends">Select a category</option>
+            <option value="motogp">Javascript</option>
+            <option value="formula1">React.js</option>
+            <option value="boxing">Next.js</option>
           </Select>
         </div>
         <div
