@@ -7,21 +7,20 @@ export default function CallToAction() {
       justify-center items-center rounded-tl-3xl rounded-bl-3xl text-center"
     >
       <div className="flex-1 justify-center flex flex-col">
-        <h2 className="text-2xl">Whant to know more about sport?</h2>
+        <h2 className="text-2xl">
+          Whant to know more about sport? Just Simple:
+        </h2>
         <p className="text-gray-500 my-2">
-          Just simple: checkout these resources whith Latest news
+          checkout these resources whith Latest news
         </p>
         <Button
           gradientDuoTone="purpleToPink"
           className="rounded-tl-xl rounded-bl-none"
+          href="https://www.github.com"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <a
-            href="https://www.github.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Latest News
-          </a>
+          Latest News
         </Button>
       </div>
       <div className="p-7 flex-1">
